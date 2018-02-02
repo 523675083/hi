@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<!-- oracle lib location -->
+	<classPathEntry location="C:\repo_tempzz\mysql\mysql-connector-java\5.1.22\mysql-connector-java-5.1.22.jar" />
+	<context id="DB2Tables" targetRuntime="MyBatis3">
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+		<!-- oracle URL、username、password -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://172.16.1.110:3306/ykly1?useUnicode=true&amp;characterEncoding=utf-8&amp;zeroDateTimeBehavior=convertToNull" userId="yklytest" password="ykly54321">
+		</jdbcConnection>
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+		<!-- model package and location -->
+		<javaModelGenerator targetPackage="com.zz.entity" targetProject="C:\workspacezz\hi\src\main\java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+		<!-- mapping package and location -->
+		<sqlMapGenerator targetPackage="com.zz.mapping" targetProject="C:\workspacezz\hi\src\main\java">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+		<!-- dao package and location -->
+		<javaClientGenerator type="XMLMAPPER" targetPackage="com.zz.dao" targetProject="C:\workspacezz\hi\src\main\java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+		<!-- table name,  change tableName and domainObjectName  -->
+		<table tableName="yk_product_place" domainObjectName="YkProductPlace" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" />
+		
+	</context>
+</generatorConfiguration>

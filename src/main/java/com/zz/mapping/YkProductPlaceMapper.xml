@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zz.dao.YkProductPlaceMapper" >
+  <resultMap id="BaseResultMap" type="com.zz.entity.YkProductPlace" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="p_id" property="pId" jdbcType="BIGINT" />
+    <result column="place_id" property="placeId" jdbcType="BIGINT" />
+    <result column="big_category_id" property="bigCategoryId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="BIGINT" />
+    <result column="is_del" property="isDel"  />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, p_id, place_id, big_category_id, create_time, is_del
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from yk_product_place
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from yk_product_place
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.zz.entity.YkProductPlace" >
+    insert into yk_product_place (id, p_id, place_id, 
+      big_category_id, create_time, is_del
+      )
+    values (#{id,jdbcType=BIGINT}, #{pId,jdbcType=BIGINT}, #{placeId,jdbcType=BIGINT}, 
+      #{bigCategoryId,jdbcType=INTEGER}, #{createTime,jdbcType=BIGINT}, #{isDel}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zz.entity.YkProductPlace" >
+    insert into yk_product_place
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="pId != null" >
+        p_id,
+      </if>
+      <if test="placeId != null" >
+        place_id,
+      </if>
+      <if test="bigCategoryId != null" >
+        big_category_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="isDel != null" >
+        is_del,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="pId != null" >
+        #{pId,jdbcType=BIGINT},
+      </if>
+      <if test="placeId != null" >
+        #{placeId,jdbcType=BIGINT},
+      </if>
+      <if test="bigCategoryId != null" >
+        #{bigCategoryId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="isDel != null" >
+        #{isDel},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zz.entity.YkProductPlace" >
+    update yk_product_place
+    <set >
+      <if test="pId != null" >
+        p_id = #{pId,jdbcType=BIGINT},
+      </if>
+      <if test="placeId != null" >
+        place_id = #{placeId,jdbcType=BIGINT},
+      </if>
+      <if test="bigCategoryId != null" >
+        big_category_id = #{bigCategoryId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="isDel != null" >
+        is_del = #{isDel},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zz.entity.YkProductPlace" >
+    update yk_product_place
+    set p_id = #{pId,jdbcType=BIGINT},
+      place_id = #{placeId,jdbcType=BIGINT},
+      big_category_id = #{bigCategoryId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=BIGINT},
+      is_del = #{isDel}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
